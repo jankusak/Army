@@ -1,8 +1,9 @@
 package ArmyGame.soldier;
 
 import ArmyGame.order.Offensive;
+import ArmyGame.order.SpecialAttackAbility;
 
-public class RohanHorseman extends ArmySoldier implements Offensive {
+public class RohanHorseman extends ArmySoldier implements Offensive, SpecialAttackAbility {
 
     private static final int damage = 6;
     private static final SoldierType soldierType = SoldierType.ATTACKER;
@@ -10,12 +11,6 @@ public class RohanHorseman extends ArmySoldier implements Offensive {
 
     public RohanHorseman(String name) {
         super(damage, soldierType, name, quote);
-
-    }
-
-
-    public void getCharge() {
-        System.out.println("Special ability: Arise, arise, riders of Théoden! (+8 morale, + 6 damage)");
     }
 
     @Override
@@ -25,10 +20,14 @@ public class RohanHorseman extends ArmySoldier implements Offensive {
 
     @Override
     public void attack() {
-        if (soldierType == SoldierType.ATTACKER) {
-            System.out.println("RohanHorseman " + super.getName() + " deals " + damage + " damage.");
-            getCharge();
-            System.out.println();
-        }
+        System.out.println("RohanHorseman " + super.getName() + " deals " + damage + " damage.");
+        System.out.println();
+    }
+
+    @Override
+    public void powerAttack() {
+        System.out.println("RohanHorseman " + super.getName() + " Special ability: Arise, arise, riders of Théoden! (+8 morale, + 6 damage)");
+        System.out.println();
+
     }
 }

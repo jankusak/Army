@@ -1,9 +1,6 @@
 package ArmyGame;
 
-import ArmyGame.order.Deffensive;
-import ArmyGame.order.Healing;
-import ArmyGame.order.Magical;
-import ArmyGame.order.Offensive;
+import ArmyGame.order.*;
 import ArmyGame.soldier.ArmySoldier;
 import ArmyGame.soldier.SoldierType;
 import ArmyGame.soldier.Wizard;
@@ -63,9 +60,17 @@ public class Army {
         }
     }
 
+    public void displaySpecialMagic() {
+        System.out.println("-------SPEACIAL MAGIC--------");
+        for (ArmySoldier soldier : soldiers) {
+            if (soldier instanceof SpecialMagicAbility) {
+                ((SpecialMagicAbility) soldier).powerMagic();
+            }
+        }
+    }
+
     public void displayAttack() {
         System.out.println("-------ATTACK--------");
-
         for (ArmySoldier soldier : soldiers) {
             if (soldier instanceof Offensive) {
                 ((Offensive) soldier).attack();
@@ -73,4 +78,22 @@ public class Army {
         }
     }
 
+    public void displaySpecialHealing() {
+        System.out.println("-------SPECIAL HEALING--------");
+        for (ArmySoldier soldier : soldiers) {
+            if (soldier instanceof SpecialHealingAbility) {
+                ((SpecialHealingAbility) soldier).powerHealing();
+            }
+        }
+
+    }
+    public void displaySpecialAttack() {
+        System.out.println("-------SPECIAL HEALING--------");
+        for (ArmySoldier soldier : soldiers) {
+            if (soldier instanceof SpecialAttackAbility) {
+                ((SpecialAttackAbility) soldier).powerAttack();
+            }
+        }
+
+    }
 }

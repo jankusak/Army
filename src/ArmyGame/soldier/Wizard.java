@@ -1,8 +1,9 @@
 package ArmyGame.soldier;
 
 import ArmyGame.order.Magical;
+import ArmyGame.order.SpecialMagicAbility;
 
-public class Wizard extends ArmySoldier implements Magical {
+public class Wizard extends ArmySoldier implements Magical, SpecialMagicAbility {
 
     private static final int magicalDamage = 10;
     private static final SoldierType soldierType = SoldierType.WIZARD;
@@ -14,21 +15,24 @@ public class Wizard extends ArmySoldier implements Magical {
         super(magicalDamage, soldierType, name, quote);
     }
 
-    public void getSpell() {
-        System.out.println("Special ability: Run You Fools! (+8 speed)");
-    }
-
-      @Override
+    @Override
     public void soldierReport() {
         System.out.println("Soldier " + super.getName() + " type: " + Wizard.soldierType + " is here. --- Quote: " + Wizard.quote);
     }
 
     @Override
     public void spell() {
-        if (soldierType == SoldierType.WIZARD) {
-            System.out.println("Wizard " + super.getName() + " deals " + magicalDamage + " magical damage.");
-            getSpell();
-            System.out.println();
-        }
+
+        System.out.println("Wizard " + super.getName() + " deals " + magicalDamage + " magical damage.");
+        System.out.println();
+
     }
+
+    @Override
+    public void powerMagic() {
+        System.out.println("Wizard " + super.getName() + " Special ability: Run You Fools! (+8 speed)");
+        System.out.println();
+    }
+
 }
+
